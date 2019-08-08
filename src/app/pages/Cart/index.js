@@ -1,22 +1,18 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import './index.scss';
-import shop from '../../../shop';
+import React from "react";
+import { connect } from "react-redux";
+import "./index.scss";
+import shop from "../../../shop";
 
 function Error() {
   return (
     <p>
-      Ohhh, no! You don't have anything in your cart{' '}
+      Ohhh, no! You don't have anything in your cart{" "}
       <span role="img" aria-label="crying face emoji">
         😢
       </span>
     </p>
   );
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> origin
 function CartHeader() {
   return (
     <div className="Cart--header">
@@ -25,10 +21,6 @@ function CartHeader() {
     </div>
   );
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> origin
 function Total({ total }) {
   return (
     <div className="Cart--total">
@@ -36,10 +28,6 @@ function Total({ total }) {
     </div>
   );
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> origin
 function CartRow({ name, count, price, currencySymbol }) {
   return (
     <div className="Cart--item">
@@ -53,7 +41,6 @@ function CartRow({ name, count, price, currencySymbol }) {
     </div>
   );
 }
-<<<<<<< HEAD
 
 function Cart({ cart, total }) {
   return (
@@ -70,29 +57,12 @@ function Cart({ cart, total }) {
 
 function mapStateToProps(state) {
   const cart = shop.selectors.getCartProducts(state);
-  const total = cart.reduce((result, { price, count }) => result + Number(price) * count, 0);
+  const total = cart.reduce(
+    (result, { price, count }) => result + Number(price) * count,
+    0
+  );
 
   return { cart, total };
 }
 
 export default connect(mapStateToProps)(Cart);
-=======
-function Cart({ products, cart }) {
-  const cartItems = cart.map(item => {
-    const product = products.find(({ id }) => id === item.id);
-    return { ...product, ...item };
-  });
-  const total = cartItems.reduce((result, { price, count }) => result + Number(price) * count, 0);
-  return (
-    <div className="Cart">
-      {!cart.length && <Error />}
-      {!!cartItems.length && <CartHeader />}
-      {cartItems.map(item => (
-        <CartRow {...item} key={item.id} />
-      ))}
-      {!!cartItems.length && <Total total={total} />}
-    </div>
-  );
-}
-export default Cart;
->>>>>>> origin
